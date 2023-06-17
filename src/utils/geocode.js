@@ -9,7 +9,10 @@ const geocode = (address, callback) => {
             callback('Unable to connect to location services!', undefined)
         }
         else if(body.error){
-            callback('Error! Check your input url!', undefined)
+            callback('Error! Try valid location!', undefined)
+        }
+        else if(body.data.length === 0){
+            callback('Error! Try valid location!', undefined)
         }
         else{
             callback(undefined, {
@@ -22,3 +25,5 @@ const geocode = (address, callback) => {
 }
 
 module.exports = geocode
+
+
